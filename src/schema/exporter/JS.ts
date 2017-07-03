@@ -11,6 +11,7 @@ import {
 import { Cache } from "@wikipathways/cget";
 import { Exporter } from "./Exporter";
 import { Namespace } from "../Namespace";
+import { TypeBase } from "../../xsd/types/TypeBase";
 import { Type } from "../Type";
 
 export type NumTbl = { [id: string]: number };
@@ -22,9 +23,8 @@ export class JS extends Exporter {
 
   writeMember(member: Member, typeNumTbl: NumTbl, memberNumTbl: NumTbl) {
     var substituteNum = 0;
-    // var memberTypeList = member.typeSpecList.map((memberType: TypeSpec) =>
     var memberTypeList = member.typeSpecList.map(
-      (memberType: any) => typeNumTbl[memberType.surrogateKey]
+      memberType => typeNumTbl[memberType.surrogateKey]
     );
 
     var name = member.safeName;
@@ -35,26 +35,18 @@ export class JS extends Exporter {
     if (member.isSubstituted) flags |= MemberFlag.substituted;
     if (member.name == "*") flags |= MemberFlag.any;
 
-    if (member.substitutes)
+    if (member.substitutes) {
       substituteNum = memberNumTbl[member.substitutes.surrogateKey];
+    }
 
-    return (
-      "\n\t[" +
-      "'" +
-      name +
-      "', " +
-      "[" +
-      memberTypeList.join(", ") +
-      "]" +
-      ", " +
-      flags +
-      (substituteNum ? ", " + substituteNum : "") +
-      "]"
-    );
+    let output = [name, memberTypeList, flags];
+    if (substituteNum) {
+      output.push(substituteNum);
+    }
+    return "\n\t" + JSON.stringify(output);
   }
 
-  // writeMemberRef(ref: MemberRef, memberNumTbl: NumTbl) {
-  writeMemberRef(ref: any, memberNumTbl: NumTbl) {
+  writeMemberRef(ref: MemberRef, memberNumTbl: NumTbl) {
     var member = ref.member;
     var name = ref.safeName;
     if (name == member.safeName) name = null;
