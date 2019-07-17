@@ -1,12 +1,20 @@
 {
   "name": "@wikipathways/cxsd",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Streaming XSD parser and XML parser generator with TypeScript output",
   "main": "./dist/schema.js",
   "typings": "./dist/schema.d.ts",
   "bin": {
     "cxsd": "bin/cxsd"
   },
+  "files": [
+    "dist",
+    "bin",
+    "package.json",
+    "package-lock.json",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d $ALLE_DIR/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...'; (cd $ALLE_DIR; npm run '@wikipathways/cxsd:build'); else npm run build; fi",
