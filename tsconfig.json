@@ -2,6 +2,10 @@
   "compilerOptions": {
     "declaration": true,
     "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -10,8 +14,7 @@
     "removeComments": false,
     "target": "es5"
   },
-  "files": [
-    "src/node-expat.d.ts",
-    "src/cli.ts"
+  "include": [
+    "src/**/*.ts"
   ]
 }

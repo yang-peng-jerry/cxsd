@@ -4,5 +4,10 @@ dist/
 *.log.*
 *.log
 *.tgz
+.direnv/
+.envrc
+.nixpkgs-version.json
+shell.nix
+!src/spinoffs/XPathParser.d.ts
 test/cache/
 test/xmlns/
