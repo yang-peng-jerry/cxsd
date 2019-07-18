@@ -20,7 +20,7 @@
     "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d $ALLE_DIR/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...'; (cd $ALLE_DIR; npm run '@wikipathways/cxsd:build'); else npm run build; fi",
     "prepublishOnly": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d $ALLE_DIR/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...'; (cd $ALLE_DIR; npm run '@wikipathways/cxsd:test'); else npm run test; fi",
     "test": "npm-run-all test:*",
-    "test:build": "npm-run-all test:build:*",
+    "test:build": "npm-run-all --silent test:build:*",
     "test:build:clean": "mkdir -p cache && rm -rf cache && cd test && mkdir -p cache && rm -rf cache && mkdir -p xmlns && rm -rf xmlns && cd ..",
     "test:build:compile": "npm-run-all test:build:compile:*",
     "test:build:compile:GPML2013a": "cd test && node ../bin/cxsd https://cdn.rawgit.com/ariutta/GPML/9a8cb502c8745058c0611106f33a0f383819b3f0/GPML2013a.xsd && cd ..",
