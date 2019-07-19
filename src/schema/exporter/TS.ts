@@ -46,8 +46,7 @@ export class TS extends Exporter {
   }
 
   writeImport(shortName: string, relativePath: string, absolutePath: string) {
-    return `/// <reference path="${relativePath}.d.ts" />`;
-    //return `import * as ${shortName} from "${relativePath}";`;
+    return `import * as ${shortName} from "${relativePath}";`;
   }
 
   /** Output list of original schema file locations. */
