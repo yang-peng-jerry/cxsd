@@ -54,7 +54,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/charto/cxsd.git"
+    "url": "git+https://github.com/ariutta/cxsd.git"
   },
   "bugs": {
     "url": "https://github.com/charto/cxsd/issues"
