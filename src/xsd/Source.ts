@@ -80,7 +80,13 @@ export class Source {
   /** Resolve a possible relative URL in the context of this source file. */
 
   urlResolve(urlRemote: string) {
-    return url.resolve(this.targetNamespace.schemaUrl, urlRemote);
+    let schemaUrl = this.targetNamespace.schemaUrl;
+    if (schemaUrl.match(/^\.?\.?\//)) {
+      // schemaUrl appears to be a local path, so we add a prefix here to
+      // clearly indicate it's a file URL.
+      schemaUrl = `file://${schemaUrl}`;
+    }
+    return url.resolve(schemaUrl, urlRemote);
   }
 
   /** Update current remote address, in case the previous address got redirected. */
