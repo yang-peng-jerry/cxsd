@@ -50,13 +50,13 @@ export abstract class Exporter extends Transform<Exporter, boolean, State> {
 
     var outName = this.getOutName(address.uri);
 
-    return (this.state.cache.isCached(outName) as Promise<
-      boolean
-    >).then((isCached: boolean) => {
-      if (isCached) return null;
+    return (this.state.cache.isCached(outName) as Promise<boolean>).then(
+      (isCached: boolean) => {
+        if (isCached) return null;
 
-      return this.state.cache.store(outName, this.writeContents());
-    });
+        return this.state.cache.store(outName, this.writeContents());
+      }
+    );
   }
 
   abstract writeContents(): string;

@@ -38,7 +38,7 @@ export class Type {
   bytePos: number;
 
   /** Primitive type of child text node if defined
-	  * (representable as a JavaScript value). */
+   * (representable as a JavaScript value). */
   primitiveType: Type;
   /** List of allowed literal values, if such a restriction is defined. */
   literalList: string[];
@@ -67,7 +67,7 @@ export class Type {
   parent: Type;
 
   /** For an anonymous type, the member (of another type) that it defines.
-	  * Used for giving the type a descriptive name. */
+   * Used for giving the type a descriptive name. */
   containingType: Type;
   // containingRef: MemberRef;
   containingRef: any;

@@ -107,7 +107,7 @@ export class Context extends ContextBase<Namespace> {
   }
 
   /** Scope containing XML primitive types.
-	  * Parent of global scopes of all other namespaces. */
+   * Parent of global scopes of all other namespaces. */
   private primitiveScope: Scope = null;
 
   /** Namespace containing XML primitive types. */

@@ -250,7 +250,7 @@ export class Parser {
   private qName = new QName();
 
   /** List of parser states still needing further processing
-	  * after previous stage is done. */
+   * after previous stage is done. */
   private pendingList: State[] = [];
 
   /** Defines valid contents for the XML file root element. */

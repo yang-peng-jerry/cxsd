@@ -59,30 +59,30 @@ function exportMember(
   } else outMember.namespace = namespace;
 
   //outMember.typeSpecList = member.getTypes().map(
-  outMember.typeSpecList = mergeDuplicateTypes(
-    member.getTypes()
-  ).map((type: types.TypeBase) => {
-    var outType = type.getOutType(context);
-    var qName = type.qName;
+  outMember.typeSpecList = mergeDuplicateTypes(member.getTypes()).map(
+    (type: types.TypeBase) => {
+      var outType = type.getOutType(context);
+      var qName = type.qName;
 
-    if (!qName && !type.name && !type.exported) {
-      // Anonymous type defined only within this element.
+      if (!qName && !type.name && !type.exported) {
+        // Anonymous type defined only within this element.
 
-      outType.containingRef = outRef;
+        outType.containingRef = outRef;
 
-      // Look through parent scopes for a containing type,
-      // If the member was referenced from another namespace,
-      // its scope points to definition in that namespace.
-      var parentType = scope.getParentType(otherNamespace);
-      if (parentType) {
-        outType.containingType = parentType.getOutType(context);
+        // Look through parent scopes for a containing type,
+        // If the member was referenced from another namespace,
+        // its scope points to definition in that namespace.
+        var parentType = scope.getParentType(otherNamespace);
+        if (parentType) {
+          outType.containingType = parentType.getOutType(context);
+        }
+
+        exportType(type, outMember.namespace, context);
       }
 
-      exportType(type, outMember.namespace, context);
+      return outType;
     }
-
-    return outType;
-  });
+  );
 
   outMember.isAbstract = member.isAbstract();
 
