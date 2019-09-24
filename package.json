@@ -17,9 +17,9 @@
   ],
   "scripts": {
     "build": "tsc --sourceMap -p tsconfig.json",
-    "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...'; (cd \"$ALLE_DIR\"; npm run '@wikipathways/cxsd:build'); else npm run build; fi",
-    "prepublishOnly": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...'; (cd \"$ALLE_DIR\"; npm run '@wikipathways/cxsd:test'); else npm run test; fi",
-    "test": "npm-run-all --silent test:*;  # In case of error, remove --silent to debug.",
+    "prepare": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@wikipathways/cxsd:build'); else npm run build; fi",
+    "prepublishOnly": "ALLE_DIR='../../../../'; if [ ! -d ./node_modules ] && [ -d \"$ALLE_DIR\"/node_modules ]; then echo 'Alle configuration detected. Testing from the top-level alle directory...' && (cd \"$ALLE_DIR\" && npm run '@wikipathways/cxsd:test'); else npm run test; fi",
+    "test": "npm-run-all --silent test:* # In case of error, remove --silent to debug.",
     "test:build": "npm-run-all test:build:*",
     "test:build:clean": "mkdir -p cache && rm -rf cache && cd test && mkdir -p cache && rm -rf cache && mkdir -p xmlns && rm -rf xmlns && cd ..",
     "test:build:compile": "npm-run-all test:build:compile:*",
