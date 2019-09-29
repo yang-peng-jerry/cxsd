@@ -75,7 +75,7 @@
     "@wikipathways/cget": "0.1.6",
     "@wikipathways/cxml": "0.2.13",
     "bluebird": "^3.5.5",
-    "commander": "^2.20.0",
+    "commander": "^2.20.1",
     "node-expat": "^2.3.18",
     "source-map-support": "^0.5.13"
   },
