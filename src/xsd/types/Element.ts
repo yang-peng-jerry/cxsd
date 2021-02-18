@@ -4,7 +4,6 @@
 import { State } from "../State";
 import { QName } from "../QName";
 import { MemberBase } from "./MemberBase";
-import { TypeBase } from "./TypeBase";
 import * as types from "../types";
 
 export interface ElementLike {

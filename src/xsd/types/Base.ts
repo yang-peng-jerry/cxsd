@@ -3,7 +3,6 @@
 
 import { Rule } from "../Rule";
 import { State } from "../State";
-import { Namespace } from "../Namespace";
 import { Scope } from "../Scope";
 import { QName } from "../QName";
 

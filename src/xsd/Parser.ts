@@ -16,8 +16,6 @@ import { Loader } from "./Loader";
 import { Source } from "./Source";
 import { QName } from "./QName";
 
-import * as util from "util";
-
 /** Parse syntax rules encoded into handler classes. */
 
 function parseRule(ctor: types.BaseClass, context: Context) {

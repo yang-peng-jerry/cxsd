@@ -8,10 +8,8 @@ import {
   MemberRefFlag
 } from "@wikipathways/cxml";
 
-import { Cache } from "@wikipathways/cget";
 import { Exporter } from "./Exporter";
 import { Namespace } from "../Namespace";
-import { TypeBase } from "../../xsd/types/TypeBase";
 import { Type } from "../Type";
 
 export type NumTbl = { [id: string]: number };

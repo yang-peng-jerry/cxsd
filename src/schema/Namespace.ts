@@ -3,8 +3,7 @@
 
 import {
   NamespaceBase,
-  MemberSpec as Member,
-  MemberRef
+  MemberSpec as Member
 } from "@wikipathways/cxml";
 
 import { Context } from "./Context";

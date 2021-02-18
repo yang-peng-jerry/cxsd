@@ -2,7 +2,6 @@
 // Released under the MIT license, see LICENSE.
 
 import { State } from "../State";
-import { QName } from "../QName";
 import * as types from "../types";
 import { TypedBase } from "./TypedBase";
 

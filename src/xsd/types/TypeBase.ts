@@ -4,7 +4,6 @@
 import { Base, BaseClass } from "./Base";
 import { State } from "../State";
 import { QName } from "../QName";
-import { NamedTypeMember } from "../Scope";
 import * as schema from "../../schema";
 
 export interface TypeBaseChild extends TypeBase {}

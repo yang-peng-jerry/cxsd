@@ -8,7 +8,6 @@ import { Context } from "./Context";
 import { Namespace } from "./Namespace";
 import { Source } from "./Source";
 import { Scope } from "./Scope";
-import { QName } from "./QName";
 
 /** Parser state, passed around between functions. */
 

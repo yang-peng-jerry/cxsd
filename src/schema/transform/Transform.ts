@@ -2,7 +2,6 @@
 // Released under the MIT license, see LICENSE.
 
 import * as Promise from "bluebird";
-import { MemberRef } from "@wikipathways/cxml";
 
 import { Namespace } from "../Namespace";
 import { Type } from "../Type";

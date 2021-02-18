@@ -4,7 +4,6 @@
 import { NamespaceBase } from "@wikipathways/cxml";
 
 import { Context } from "./Context";
-import { Loader } from "./Loader";
 import { Source } from "./Source";
 import { Scope } from "./Scope";
 

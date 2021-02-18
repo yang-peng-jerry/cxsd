@@ -2,7 +2,6 @@
 // Released under the MIT license, see LICENSE.
 
 import { State } from "../State";
-import { Namespace } from "../Namespace";
 import * as types from "../types";
 
 /** <xsd:include> */
