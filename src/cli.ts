@@ -15,12 +15,7 @@ import { AddImports } from "./schema/transform/AddImports";
 import { Sanitize } from "./schema/transform/Sanitize";
 import * as schema from "./schema";
 
-type _ICommand = typeof cmd;
-interface ICommand extends _ICommand {
-  arguments(spec: string): ICommand;
-}
-
-(cmd.version(require("../package.json").version) as ICommand)
+cmd.version(require("../package.json").version)
   .arguments("<url>")
   .description("XSD download and conversion tool")
   .option(
@@ -61,9 +56,7 @@ function handleConvert(urlRemote: string, opts: { [key: string]: any }) {
   }
 
   var jsCache = new Cache(opts["outJs"] || "xmlns", { indexName: "_index.js" });
-  var tsCache = new Cache(opts["outTs"] || "xmlns", {
-    indexName: "_index.d.ts"
-  });
+  var tsCache = new Cache(opts["outTs"] || "xmlns", { indexName: "_index.d.ts" });
 
   var loader = new Loader(xsdContext, fetchOptions);
 
