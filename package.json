@@ -44,11 +44,6 @@
     "transformIgnorePatterns": [
       "<rootDir>/(node_modules)/"
     ],
-    "haste": {
-      "providesModuleNodeModules": [
-        ".*"
-      ]
-    },
     "testRegex": "(/src/.*\\.test\\.(ts|tsx|js))$"
   },
   "author": "Juha Järvi",
