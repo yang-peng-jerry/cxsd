@@ -5,7 +5,7 @@
   "main": "./dist/schema.js",
   "typings": "./dist/schema.d.ts",
   "bin": {
-    "cxsd": "bin/cxsd"
+    "cxsd": "dist/cli.js"
   },
   "files": [
     "dist",
