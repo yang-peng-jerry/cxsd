@@ -213,22 +213,7 @@ export class TS extends Exporter {
     }
 
     var content = this.writeTypeContent(type);
-
-    const disallowedAliases = [
-      "string",
-      "boolean",
-      "object",
-      "symbol",
-      "bigint",
-      "function",
-      "number",
-      "undefined"
-    ];
     
-    if(disallowedAliases.includes(name)) {
-      return "";
-    }
-
     if (namespace.isPrimitiveSpace) {
       output.push(
         exportPrefix +
@@ -247,7 +232,6 @@ export class TS extends Exporter {
     } else if (type.isPlainPrimitive) {
       parentDef = this.writeTypeRef(type.parent, "_");
 
-      output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
       if (type.literalList && type.literalList.length) {
         output.push(
           "interface _" +
