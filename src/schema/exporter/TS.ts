@@ -214,9 +214,22 @@ export class TS extends Exporter {
 
     var content = this.writeTypeContent(type);
 
-    if(name === content) {
+    const disallowedAliases = [
+      "string",
+      "boolean",
+      "object",
+      "symbol",
+      "bigint",
+      "function",
+      "number",
+      "undefined"
+    ];
+    
+    if(disallowedAliases.includes(name)) {
+      return "";
+    }
 
-		} else if (namespace.isPrimitiveSpace) {
+    if (namespace.isPrimitiveSpace) {
       output.push(
         exportPrefix +
           "interface _" +
