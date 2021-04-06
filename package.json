@@ -1,6 +1,6 @@
 {
   "name": "@calme1709/cxsd",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Streaming XSD parser and XML parser generator with TypeScript output",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
