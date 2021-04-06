@@ -233,8 +233,6 @@ export class TS extends Exporter {
       parentDef = this.writeTypeRef(type.parent, "_");
 
       output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
-
-      console.log(exportPrefix + "type " + name + " = " + content + ";" + "\n");
       if (type.literalList && type.literalList.length) {
         output.push(
           "interface _" +
@@ -279,7 +277,7 @@ export class TS extends Exporter {
         );
     }
 
-    return output.filter(x => !Boolean(/.*export type (string|boolean) = .+;$/.exec(x))).join("");
+    return output.filter(x => !Boolean(/.*type (string|boolean) = .+;\n$/.exec(x))).join("");
   }
 
   // writeSubstitutions(type: Type, refList: MemberRef[], output: string[]) {
