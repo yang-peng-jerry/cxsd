@@ -214,7 +214,9 @@ export class TS extends Exporter {
 
     var content = this.writeTypeContent(type);
 
-    if (namespace.isPrimitiveSpace) {
+    if(name === content) {
+
+		} else if (namespace.isPrimitiveSpace) {
       output.push(
         exportPrefix +
           "interface _" +
