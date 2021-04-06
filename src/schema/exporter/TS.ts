@@ -233,6 +233,8 @@ export class TS extends Exporter {
       parentDef = this.writeTypeRef(type.parent, "_");
 
       output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
+
+      console.log(exportPrefix + "type " + name + " = " + content + ";" + "\n");
       if (type.literalList && type.literalList.length) {
         output.push(
           "interface _" +
