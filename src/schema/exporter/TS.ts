@@ -214,17 +214,6 @@ export class TS extends Exporter {
 
     var content = this.writeTypeContent(type);
 
-    const disallowedAliases = [
-      "string",
-      "boolean",
-      "object",
-      "symbol",
-      "bigint",
-      "function",
-      "number",
-      "undefined"
-    ];
-    
     if (namespace.isPrimitiveSpace) {
       output.push(
         exportPrefix +
@@ -243,10 +232,7 @@ export class TS extends Exporter {
     } else if (type.isPlainPrimitive) {
       parentDef = this.writeTypeRef(type.parent, "_");
 
-      if(!disallowedAliases.includes(name)) {
-        output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
-      }
-
+      output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
       if (type.literalList && type.literalList.length) {
         output.push(
           "interface _" +
@@ -291,7 +277,7 @@ export class TS extends Exporter {
         );
     }
 
-    return output.join("");
+    return output.filter(x => !Boolean(/.*export type (string|boolean) = .+;$/.exec(x))).join("");
   }
 
   // writeSubstitutions(type: Type, refList: MemberRef[], output: string[]) {
