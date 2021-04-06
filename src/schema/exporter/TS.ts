@@ -213,6 +213,17 @@ export class TS extends Exporter {
     }
 
     var content = this.writeTypeContent(type);
+
+    const disallowedAliases = [
+      "string",
+      "boolean",
+      "object",
+      "symbol",
+      "bigint",
+      "function",
+      "number",
+      "undefined"
+    ];
     
     if (namespace.isPrimitiveSpace) {
       output.push(
@@ -231,6 +242,10 @@ export class TS extends Exporter {
       output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
     } else if (type.isPlainPrimitive) {
       parentDef = this.writeTypeRef(type.parent, "_");
+
+      if(!disallowedAliases.includes(name)) {
+        output.push(exportPrefix + "type " + name + " = " + content + ";" + "\n");
+      }
 
       if (type.literalList && type.literalList.length) {
         output.push(
