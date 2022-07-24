@@ -127,7 +127,7 @@ export class TS extends Exporter {
     } else return outTypes;
   }
 
-  writeMember(ref: MemberRef, isGlobal: boolean) {
+  writeMember(ref: MemberRef, isGlobal: boolean, isAttribute : boolean = false) {
     var output: string[] = [];
     var member = ref.member;
     var comment = member.comment;
@@ -142,7 +142,12 @@ export class TS extends Exporter {
       output.push("\n");
     }
 
-    output.push(indent + ref.safeName);
+    if (isAttribute) {
+      output.push(indent + "_" + ref.safeName);
+    } else {
+      output.push(indent + ref.safeName);
+    }
+    
     if (ref.min == 0) output.push("?");
     output.push(": ");
 
@@ -175,7 +180,7 @@ export class TS extends Exporter {
       var parentType = type.parent;
 
       for (var attribute of type.attributeList) {
-        var outAttribute = this.writeMember(attribute, false);
+        var outAttribute = this.writeMember(attribute, false, true);
         if (outAttribute) outMemberList.push(outAttribute);
       }
 

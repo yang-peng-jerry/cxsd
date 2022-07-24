@@ -16,13 +16,14 @@ export interface NamedTypeMember extends TypeMember {
 }
 
 function addMemberToTable(
-  tbl: { [name: string]: TypeMember },
+  tbl: Map<string, TypeMember>,// { [name: string]: TypeMember },
   name: string,
   specNew: TypeMember,
   min = 1,
   max = 1
 ) {
-  var spec = tbl[name];
+  // var spec = tbl[name];
+  var spec = tbl.get(name);
 
   if (spec) {
     spec.min += specNew.min * min;
@@ -34,7 +35,8 @@ function addMemberToTable(
       item: specNew.item
     };
 
-    tbl[name] = spec;
+    tbl.set(name, spec);
+    // tbl[name] = spec;
   }
 }
 
@@ -190,13 +192,14 @@ export class Scope {
     return this.expose[kind];
   }
 
-  dumpMembers(kind: string, groupKind: string) {
+  dumpMembers(kind: string, groupKind: string): Map<string, TypeMember> {
     var itemList = this.expose[kind] || [];
     var groupList = this.expose[groupKind] || [];
-    var output: { [name: string]: TypeMember } = {};
+    var mapOutput = new Map<string, TypeMember>();
+    //var output: { [name: string]: TypeMember } = {};
 
     for (var spec of itemList) {
-      if (spec.name) addMemberToTable(output, spec.name, spec);
+      if (spec.name) addMemberToTable(mapOutput, spec.name, spec);
     }
 
     for (var group of groupList) {
@@ -205,12 +208,19 @@ export class Scope {
 
       var attributeTbl = group.item.getScope().dumpMembers(kind, groupKind);
 
-      for (var key of Object.keys(attributeTbl)) {
-        addMemberToTable(output, key, attributeTbl[key], min, max);
+      for (var key of attributeTbl.keys()) {
+        addMemberToTable(mapOutput, key, attributeTbl.get(key), min, max);
       }
     }
 
+    /*
+    var output: { [name: string]: TypeMember } = {};
+    for (let key of mapOutput.keys()) {
+      output[key] = mapOutput.get(key);
+    }
     return output;
+    */
+    return mapOutput;
   }
 
   private parent: Scope;

@@ -26,6 +26,7 @@
     "test:build:compile": "npm-run-all test:build:compile:*",
     "test:build:compile:GPML2013a": "cd test && node ../dist/cli.js https://raw.githubusercontent.com/ariutta/GPML/master/GPML2013a.xsd && cd ..",
     "test:build:compile:dir-example": "cd test && node ../dist/cli.js ./input/dir-example.xsd && cd ..",
+    "test:debug": "cd test && node ../dist/cli.js /Users/yang/workspace/another-jerry-serverless/libs/quotinglib/src/schema/xsd/acord-pcs.xsd && cd ..",
     "test:run": "jest"
   },
   "jest": {

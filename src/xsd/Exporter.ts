@@ -103,8 +103,8 @@ function exportAttributes(
 ) {
   var memberTbl = scope.dumpMembers("attribute", "attributeGroup");
 
-  for (var key of Object.keys(memberTbl).sort()) {
-    var ref = exportMemberRef(memberTbl[key], scope, namespace, context);
+  for (var value of memberTbl.values()) {
+    var ref = exportMemberRef(value, scope, namespace, context);
     type.addAttribute(ref);
   }
 }
@@ -118,8 +118,8 @@ function exportChildren(
 ) {
   var memberTbl = scope.dumpMembers("element", "group");
 
-  for (var key of Object.keys(memberTbl).sort()) {
-    var ref = exportMemberRef(memberTbl[key], scope, namespace, context);
+  for (var value of memberTbl.values()) {
+    var ref = exportMemberRef(value, scope, namespace, context);
 
     if (setExported) ref.member.isExported = true;
     outType.addChild(ref);
